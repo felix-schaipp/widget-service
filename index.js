@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import { Coinbase } from './Coinbase'
 const app = express()
 const port = 5000
@@ -15,6 +16,8 @@ function getHeaders(request) {
     currency: request.get('CB-CURRENCY'),
   }
 }
+
+app.use(cors())
 
 app.get('/coinbase/balance', (request, response) => {
   // TODO add simple authentication
@@ -33,6 +36,6 @@ app.get('/coinbase/balance', (request, response) => {
   }
 })
 
-app.listen({ port: process.env.PORT || port }, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`🚀 Server is running on port ${port}`)
 })
