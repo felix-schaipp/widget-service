@@ -1,0 +1,23 @@
+{
+  "name": "widget-service",
+  "version": "1.0.0",
+  "description": "Small express backend service to provide the ios widget with data",
+  "main": "index.js",
+  "repository": "git@github.com:felix-schaipp/widget-service.git",
+  "author": "Felix Schaipp <felix.schaipp@auteon.de>",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/felix-schaipp/widget-service/issues"
+  },
+  "homepage": "https://github.com/felix-schaipp/widget-service#readme",
+  "license": "MIT",
+  "engines": {
+    "node": "16.3.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1"
+  }
+}
