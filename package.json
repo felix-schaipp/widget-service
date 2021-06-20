@@ -1,12 +1,13 @@
 {
-  "name": "widget-service",
+  "name": "ios-widget-service",
   "version": "1.0.0",
   "description": "Small express backend service to provide the ios widget with data",
   "main": "index.js",
   "repository": "git@github.com:felix-schaipp/widget-service.git",
   "author": "Felix Schaipp <felix.schaipp@auteon.de>",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/felix-schaipp/widget-service/issues"
