@@ -2,6 +2,8 @@
   "name": "ios-widget-service",
   "version": "1.0.0",
   "description": "Small express backend service to provide the ios widget with data",
+  "type": "module",
+  "private": "true",
   "main": "index.js",
   "repository": "git@github.com:felix-schaipp/widget-service.git",
   "author": "Felix Schaipp <felix.schaipp@auteon.de>",

@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import { Coinbase } from './Coinbase'
+import { Coinbase } from './Coinbase.js'
 const app = express()
 const port = 5000
 
@@ -19,7 +19,7 @@ function getHeaders(request) {
 
 app.use(cors())
 
-app.get('/coinbase/balance', (request, response) => {
+app.get('/coinbase/balance', async (request, response, next) => {
   // TODO add simple authentication
   clients.coinbase.setEnvironment(getHeaders(request))
   try {
@@ -33,6 +33,7 @@ app.get('/coinbase/balance', (request, response) => {
       statusCode: 500,
       body: error,
     })
+    next(e)
   }
 })
 
