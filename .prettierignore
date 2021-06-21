@@ -1,0 +1,10 @@
+.github
+coverage
+node_modules
+.prettierrc
+*.yml
+*.yaml
+build
+yarn.lock
+.husky
+.prettierignore
