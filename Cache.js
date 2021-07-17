@@ -8,10 +8,16 @@ export class Cache {
     if (environment === 'development') {
       this.cache = Redis.createClient()
     } else {
-      // https://devcenter.heroku.com/articles/redistogo
-      const redisToGo = url.parse(process.env.REDISTOGO_URL || environment)
-      const redis = Redis.createClient(redisToGo.port, redisToGo.hostname)
-      this.cache = redis.auth(redisToGo.auth.split(':')[1])
+      try {
+        console.log('try setting up cache with redisToGO')
+        // https://devcenter.heroku.com/articles/redistogo
+        const redisToGo = url.parse(process.env.REDISTOGO_URL || environment)
+        const redis = Redis.createClient(redisToGo.port, redisToGo.hostname)
+        this.cache = redis.auth(redisToGo.auth.split(':')[1])
+        console.log('Finsihed setup')
+      } catch (error) {
+        console.log('An error occured on redisToGo setup', error)
+      }
     }
     this.DEFAULT_EXPIRATION = 60 * 60 * 8 // 8 hours
   }

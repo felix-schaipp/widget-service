@@ -10,7 +10,9 @@ const clients = {
   coinbase: new Coinbase(),
 }
 
+console.log('Initialize cache...')
 const cache = new Cache(process.env.REDISTOGO_URL || 'development')
+console.log('...finished initalizing')
 app.use(cors())
 
 function getHeaders(request) {
