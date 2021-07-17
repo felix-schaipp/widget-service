@@ -10,7 +10,7 @@ const clients = {
   coinbase: new Coinbase(),
 }
 
-const cache = new Cache(process.env.NODE_ENV || 'development')
+const cache = new Cache(process.env.REDISTOGO_URL || 'development')
 app.use(cors())
 
 function getHeaders(request) {
