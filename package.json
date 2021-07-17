@@ -30,12 +30,13 @@
   "homepage": "https://github.com/felix-schaipp/widget-service#readme",
   "license": "MIT",
   "engines": {
-    "node": "16.3.0"
+    "node": "16.4.2"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "redis": "^3.1.2"
   },
   "devDependencies": {
     "husky": "^6.0.0",
