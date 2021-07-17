@@ -12,7 +12,8 @@ export class Cache {
         // https://devcenter.heroku.com/articles/redistogo
         const redisToGo = url.parse(process.env.REDISTOGO_URL || environment)
         const redis = Redis.createClient(redisToGo.port, redisToGo.hostname)
-        this.cache = redis.auth(redisToGo.auth.split(':')[1])
+        redis.auth(redisToGo.auth.split(':')[1])
+        this.cache = redis
       } catch (error) {
         console.log('An error occured on redisToGo setup', error)
         throw new Error('An error occured on redisToGo setup')
@@ -23,7 +24,6 @@ export class Cache {
 
   getOrSet(key, expiration, historyKey, callback) {
     return new Promise((resolve, reject) => {
-      console.log('cache object', this.cache)
       this.cache.get(key, async (error, data) => {
         if (error) return reject(error)
         if (data != null) return resolve(JSON.parse(data))
