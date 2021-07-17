@@ -1,15 +1,15 @@
 import Redis from 'redis'
+import url from 'url'
 
 export class Cache {
   cache
   DEFAULT_EXPIRATION
   constructor(environment) {
-    if (environment === 'production') {
-      this.cache = Redis.createClient({
-        url: 'https://ios-widget-service.herokuapp.com/cache',
-      })
-    } else {
+    if (environment === 'development') {
       this.cache = Redis.createClient()
+    } else {
+      const redisToGo = url.parse(process.env.REDISTOGO_URL || environment)
+      this.cache = Redis.createClient(redisToGo.port, redisToGo.hostname)
     }
     this.DEFAULT_EXPIRATION = 60 * 60 * 8 // 8 hours
   }
