@@ -8,8 +8,10 @@ export class Cache {
     if (environment === 'development') {
       this.cache = Redis.createClient()
     } else {
+      // https://devcenter.heroku.com/articles/redistogo
       const redisToGo = url.parse(process.env.REDISTOGO_URL || environment)
-      this.cache = Redis.createClient(redisToGo.port, redisToGo.hostname)
+      const redis = Redis.createClient(redisToGo.port, redisToGo.hostname)
+      this.cache = redis.auth(redisToGo.auth.split(':')[1])
     }
     this.DEFAULT_EXPIRATION = 60 * 60 * 8 // 8 hours
   }
